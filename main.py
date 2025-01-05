@@ -51,6 +51,7 @@ def main():
             if item.crash(player):
                 print("Game over!")
                 screen.blit(text, textRect)
+                pygame.time.wait(1500)
                 pygame.quit()
 
             for shot in shots:
