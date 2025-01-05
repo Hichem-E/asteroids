@@ -46,6 +46,7 @@ def main():
         screen.fill((0, 0, 0))
         for item in updatable:
             item.update(dt)
+            
         for item in asteroids:
             if item.crash(player):
                 print("Game over!")
