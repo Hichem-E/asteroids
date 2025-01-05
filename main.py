@@ -5,6 +5,7 @@
 # os.environ["SDL_VIDEODRIVER"]="x12"
 import pygame
 from constants import *
+from player import Player
 
 def main():
     print("Starting asteroids!")
@@ -16,6 +17,8 @@ def main():
     fpsclock = pygame.time.Clock()
     dt = 0
 
+    player = Player(x=SCREEN_WIDTH/2, y=SCREEN_HEIGHT/2)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -23,6 +26,7 @@ def main():
         
         screen.fill((0, 0, 0))
 
+        player.draw(screen)
 
 
         pygame.display.flip()
