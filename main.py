@@ -19,6 +19,11 @@ def main():
     fpsclock = pygame.time.Clock()
     dt = 0
 
+    font = pygame.font.Font('freesansbold.ttf', 32)
+    text = font.render('Game Over!', True, (0, 255, 0), (0, 0, 128))
+    textRect = text.get_rect()
+    textRect.center = (400 // 2, 400 // 2)
+
     asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -38,6 +43,13 @@ def main():
         screen.fill((0, 0, 0))
         for item in updatable:
             item.update(dt)
+        for item in asteroids:
+            if item.crash(player):
+                print("Game over!")
+                screen.blit(text, textRect)
+                pygame.quit()
+                
+
         for item in drawable:
             item.draw(screen)
 
